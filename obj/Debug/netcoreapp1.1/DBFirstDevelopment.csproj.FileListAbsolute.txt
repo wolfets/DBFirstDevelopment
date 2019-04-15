@@ -1,0 +1,11 @@
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\bin\Debug\netcoreapp1.1\DBFirstDevelopment.deps.json
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\bin\Debug\netcoreapp1.1\DBFirstDevelopment.runtimeconfig.json
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\bin\Debug\netcoreapp1.1\DBFirstDevelopment.runtimeconfig.dev.json
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\bin\Debug\netcoreapp1.1\DBFirstDevelopment.dll
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\bin\Debug\netcoreapp1.1\DBFirstDevelopment.pdb
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.csprojAssemblyReference.cache
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.csproj.CoreCompileInputs.cache
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.AssemblyInfoInputs.cache
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.AssemblyInfo.cs
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.dll
+C:\Users\Stéphane Darcissac\source\repos\DBFirstDevelopment\obj\Debug\netcoreapp1.1\DBFirstDevelopment.pdb
