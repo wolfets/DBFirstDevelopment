@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using DBFirstDevelopment.Models;
 using DBFirstDevelopment.Models.DB;
 using Microsoft.EntityFrameworkCore;
-
+using DBFirstDevelopment.Services;
 
 namespace DBFirstDevelopment
 {
@@ -35,7 +35,8 @@ namespace DBFirstDevelopment
             services.AddMvc();
 
             // Add ASPNETCoreDemoDBContext services.
-            services.AddDbContext<EFCoreDBFirstDemoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EFCoreDBFirstDemoDatabase")));
+            //services.AddDbContext<EFCoreDBFirstDemoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EFCoreDBFirstDemoDatabase")));
+            services.AddSingleton<IStudentItemService, StudentItemService>();
 
         }
 

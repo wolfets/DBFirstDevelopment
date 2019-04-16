@@ -1,6 +1,8 @@
 using DBFirstDevelopment.Models.DB;
+using DBFirstDevelopment.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,9 +10,10 @@ namespace DBFirstDevelopment.Controllers
 {
     public class StudentsController : Controller
     {
-        private readonly EFCoreDBFirstDemoContext _context;
+        //private readonly EFCoreDBFirstDemoContext _context;
+        private readonly IStudentItemService _context;
 
-        public StudentsController(EFCoreDBFirstDemoContext context)
+        public StudentsController(IStudentItemService context)
         {
             _context = context;    
         }
@@ -18,19 +21,19 @@ namespace DBFirstDevelopment.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Student.ToListAsync());
+            //return View(await _context.Student.ToListAsync());
+            return View(await _context.getAllAsync());
         }
 
         // GET: Students/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .SingleOrDefaultAsync(m => m.StudentId == id);
+            var student = await _context.getByIdAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -54,22 +57,22 @@ namespace DBFirstDevelopment.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
-                await _context.SaveChangesAsync();
+                //_context.Add(student);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(student);
         }
 
         // GET: Students/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Student.SingleOrDefaultAsync(m => m.StudentId == id);
+            var student = await _context.getByIdAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -82,9 +85,9 @@ namespace DBFirstDevelopment.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("StudentId,FirstName,LastName,Gender,DateOfBirth,DateOfRegistration,PhoneNumber,Email,Address1,Address2,City,State,Zip")] Student student)
+        public async Task<IActionResult> Edit(Guid id, [Bind("StudentId,FirstName,LastName,Gender,DateOfBirth,DateOfRegistration,PhoneNumber,Email,Address1,Address2,City,State,Zip")] Student student)
         {
-            if (id != student.StudentId)
+            if (id != student.Id)
             {
                 return NotFound();
             }
@@ -93,19 +96,19 @@ namespace DBFirstDevelopment.Controllers
             {
                 try
                 {
-                    _context.Update(student);
-                    await _context.SaveChangesAsync();
+                    //_context.Update(student);
+                    //await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.StudentId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    //if (!StudentExists(student.Id))
+                    //{
+                    //    return NotFound();
+                    //}
+                    //else
+                    //{
+                    //    throw;
+                    //}
                 }
                 return RedirectToAction("Index");
             }
@@ -113,15 +116,14 @@ namespace DBFirstDevelopment.Controllers
         }
 
         // GET: Students/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Student
-                .SingleOrDefaultAsync(m => m.StudentId == id);
+            var student = await _context.getByIdAsync(id);
             if (student == null)
             {
                 return NotFound();
@@ -133,17 +135,17 @@ namespace DBFirstDevelopment.Controllers
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var student = await _context.Student.SingleOrDefaultAsync(m => m.StudentId == id);
-            _context.Student.Remove(student);
-            await _context.SaveChangesAsync();
+            var student = await _context.delByIdAsync(id);
+            //student. Remove(student);
+            //await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
-        private bool StudentExists(long id)
-        {
-            return _context.Student.Any(e => e.StudentId == id);
-        }
+        //private async bool StudentExists(Guid id)
+        //{
+        //    return await _context.getAllAsync().Any(e => e.Id == id);
+        //}
     }
 }
